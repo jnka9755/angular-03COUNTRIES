@@ -3,12 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <form autocomplete="off" (ngSubmit)="search()">
-            <input type="text" name="query" placeholder="Buscar país..." 
-            class="form-control"
-            [(ngModel)]="query"
-            />
-        </form>
+        <app-country-input (onSearch)="search( $event )"></app-country-input>
     </div>
 </div>
 
@@ -17,29 +12,8 @@
     No se encontró nada con el parametro de busqueda: {{query}}
 </div>
 
-<div *ngIf="isExists" class="row">
+<div *ngIf="countries.length > 0" class="row">
     <div class="col">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Bandera</th>
-                    <th>Nombre</th>
-                    <th>Población</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td>Colombia</td>
-                    <td>1123123123123</td>
-                    <td>
-                        <a href="#">Ver....</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <app-country-table [countries]="countries"></app-country-table>
     </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CountryDto } from '../../interfaces/countryDto.interface';
 
 import { CountryService } from '../../services/country.service';
 
@@ -10,20 +11,26 @@ export class CountryComponent implements OnInit {
 
   public query:string = '';
   public isExists: boolean = true;
+  public countries: CountryDto[] = [];
 
   constructor(private countryService: CountryService) { }
 
   ngOnInit(): void {
   }
 
-  search() {
+  search( query: string) {
 
     this.isExists = true;
-    this.countryService.searchCountryByName(this.query).subscribe(response =>{
-      console.log(response);
+    this.query = query;
+    
+    this.countryService.searchCountryByName(query).subscribe(response =>{
+
+      this.countries = response;
+      this.countries[0]
     },
     error =>{
       this.isExists = false;
+      this.countries = [];
     });
   }
 }

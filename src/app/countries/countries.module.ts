@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { CapitalComponent } from './pages/capital/capital.component';
 import { CountryComponent } from './pages/country/country.component';
 import { RegionComponent } from './pages/region/region.component';
 import { CountryDetailComponent } from './pages/country-detail/country-detail.component';
+import { CountryTableComponent } from './components/country-table/country-table.component';
+import { CountryInputComponent } from './components/country-input/country-input.component';
 
 
 @NgModule({
@@ -13,11 +16,14 @@ import { CountryDetailComponent } from './pages/country-detail/country-detail.co
     CapitalComponent,
     CountryComponent,
     RegionComponent,
-    CountryDetailComponent
+    CountryDetailComponent,
+    CountryTableComponent,
+    CountryInputComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports: [
     CapitalComponent,

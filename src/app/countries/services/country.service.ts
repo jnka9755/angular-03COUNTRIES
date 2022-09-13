@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { CountryDto } from '../interfaces/countryDto.interface';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,8 +13,8 @@ export class CountryService {
 
   constructor(private http: HttpClient) { }
 
-  searchCountryByName(parameter: string): Observable<any> {
+  searchCountryByName(parameter: string): Observable<CountryDto[]> {
     
-    return this.http.get(`${this.URL}/name/${parameter}`);
+    return this.http.get<CountryDto[]>(`${this.URL}/name/${ parameter }`);
   }
 }
