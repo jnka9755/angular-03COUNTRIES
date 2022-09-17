@@ -1,6 +1,7 @@
 <form autocomplete="off" (ngSubmit)="search()">
-    <input type="text" name="query" placeholder="Buscar país..." 
+    <input type="text" name="query" placeholder="{{placeholder}}" 
     class="form-control"
     [(ngModel)]="query"
+    (input)="changeValue()"
     />
 </form>
